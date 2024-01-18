@@ -12,7 +12,7 @@ from pydantic import BaseModel
 app = FastAPI()
 df_raw = pd.read_csv("classes_prod.csv")
 df = pd.read_csv("classesNum_prod.csv")
-loaded_model = joblib.load("nearest_neighbors_model_v3.pkl")
+loaded_model = joblib.load("nearest_neighbors_model_v4.pkl")
 
 def recommend_class(class_id, df, model):
     indexByClassId = df_raw[df_raw["classId"] == int(class_id)].index[0]
@@ -32,13 +32,13 @@ def recommend_class(class_id, df, model):
         classId = data["classId"].values[0]
         nameTh = data["nameTh"].values[0]
         nameEn = data["nameEn"].values[0]
-        hours = data["hours"].values[0]
+        # hours = data["hours"].values[0]
 
         recommend_class_list.append({
             "classId": classId,
             "nameTh": nameTh,
             "nameEn": nameEn,
-            "hours": hours,
+            # "hours": hours,
             "distance": distance
         })
 
