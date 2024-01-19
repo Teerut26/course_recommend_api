@@ -12,7 +12,7 @@ from pydantic import BaseModel
 app = FastAPI()
 df_raw = pd.read_csv("classes_prod.csv")
 df = pd.read_csv("classesNum_prod.csv")
-loaded_model = joblib.load("nearest_neighbors_model_v4.pkl")
+loaded_model = joblib.load("nearest_neighbors_model_v5.pkl")
 
 def recommend_class(class_id, df, model):
     indexByClassId = df_raw[df_raw["classId"] == int(class_id)].index[0]
